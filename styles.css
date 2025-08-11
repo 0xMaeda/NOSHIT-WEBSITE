@@ -168,7 +168,7 @@ h1, h2 { margin: 0 0 .5rem 0; }
 }
 .toilet-aligned .gold-toilet-img {
   position: absolute;
-  left: calc(50% + 288px); /* match poop's left positioning */
+  left: calc(50% + 298px); /* match poop's left positioning */
   transform: translateX(-50%);
 }
 
@@ -224,7 +224,7 @@ h1, h2 { margin: 0 0 .5rem 0; }
 /* Marble floor under toilet */
 .marble-floor {
   position: absolute;
-  top: 180%;
+  top: 190%;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
