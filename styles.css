@@ -224,7 +224,7 @@ h1, h2 { margin: 0 0 .5rem 0; }
 /* Marble floor under toilet */
 .marble-floor {
   position: absolute;
-  top: 200%;
+  top: 220%;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
