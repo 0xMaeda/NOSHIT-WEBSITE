@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>$NOSHIT • Official Site</title>
+  <meta name="description" content="$NOSHIT — community meme coin on Avalanche. Contract: 0x1B7B...600c" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Hero / Scroll Scene -->
+  <header class="hero" id="top">
+    <div class="city-bg" aria-hidden="true">
+      <svg viewBox="0 0 1200 400" preserveAspectRatio="none">
+        <rect width="1200" height="400" fill="#111822"/>
+        <rect y="280" width="1200" height="120" fill="#0b1118"/>
+        <g fill="#1b2635">
+          <rect x="40" y="160" width="90" height="140"/>
+          <rect x="160" y="110" width="70" height="190"/>
+          <rect x="250" y="190" width="140" height="110"/>
+          <rect x="420" y="100" width="110" height="200"/>
+          <rect x="560" y="150" width="80" height="150"/>
+          <rect x="670" y="180" width="60" height="120"/>
+          <rect x="760" y="140" width="120" height="160"/>
+          <rect x="900" y="170" width="90" height="130"/>
+          <rect x="1010" y="120" width="120" height="180"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="building">
+      <div class="brick"></div>
+      <div class="edge"></div>
+    </div>
+
+    <!-- Character sitting at the edge -->
+    <img src="assets/character-placeholder.svg" class="character" alt="Mascot sitting on the roof edge" />
+
+    <!-- Poop emoji that falls on scroll -->
+    <div id="poop" class="poop" aria-hidden="true">💩</div>
+
+    <div class="hero-copy">
+      <h1>$NOSHIT</h1>
+      <p>Decentralized due diligence. We don’t take 💩 — we flush it.</p>
+      <div class="cta-row">
+        <button id="copyAddressBtn" class="btn">Copy Contract</button>
+        <a id="buyBtn" class="btn outline" target="_blank" rel="noopener">Buy on Trader Joe</a>
+      </div>
+      <code class="address">0x1B7BF3cf3080ea8b844E3834Fb8705bBF975600c</code>
+      <div class="scroll-hint">Scroll ↓</div>
+    </div>
+  </header>
+
+  <!-- Info section with toilet target -->
+  <main>
+    <section class="info">
+      <div class="toilet-wrap" id="toiletTarget" aria-hidden="true">
+        <img src="assets/toilet.png" class="toilet" alt="Toilet" />
+        <div id="splash" class="splash" aria-hidden="true"></div>
+      </div>
+
+      <article class="card">
+        <h2>About $NOSHIT</h2>
+        <p><strong>Chain:</strong> Avalanche C-Chain (43114)</p>
+        <p><strong>Symbol:</strong> NOSHIT &nbsp; • &nbsp; <strong>Decimals:</strong> 18</p>
+        <p><strong>Contract:</strong> <span id="contractText">0x1B7BF3cf3080ea8b844E3834Fb8705bBF975600c</span></p>
+        <div class="action-row">
+          <button id="watchAssetBtn" class="btn small">Add to Wallet</button>
+          <a id="snowtraceLink" class="btn small outline" target="_blank" rel="noopener">View on SnowTrace</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Live Chart</h2>
+        <div class="chart-embed">
+          <iframe id="dexIframe" src="https://dexscreener.com/avalanche?embed=1&q=0x1B7BF3cf3080ea8b844E3834Fb8705bBF975600c" loading="lazy"></iframe>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>How to Buy</h2>
+        <ol class="steps">
+          <li>Install Core or MetaMask and switch to <strong>Avalanche C-Chain</strong>.</li>
+          <li>Fund wallet with AVAX.</li>
+          <li>Click “Buy on Trader Joe” and swap AVAX → <strong>NOSHIT</strong>.</li>
+          <li>Use “Add to Wallet” so the token shows in your wallet.</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <h2>Socials</h2>
+        <div class="socials">
+          <a href="#" target="_blank" rel="noopener" class="social">X (Twitter)</a>
+          <a href="#" target="_blank" rel="noopener" class="social">Telegram</a>
+          <a href="mailto:team@noshit.invalid" class="social">Email</a>
+        </div>
+      </article>
+
+      <article class="card disclaimer">
+        <h2>Disclaimer</h2>
+        <p>$NOSHIT is a meme token with no intrinsic value or expectation of financial return. Crypto is risky; never invest more than you can afford to lose.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>© <span id="year"></span> $NOSHIT</div>
+  </footer>
+</body>
+</html>
