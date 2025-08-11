@@ -2,8 +2,8 @@ const CONTRACT = "0x1B7BF3cf3080ea8b844E3834Fb8705bBF975600c";
 const SYMBOL = "NOSHIT";
 const DECIMALS = 18;
 
-const buyUrl = `https://traderjoexyz.com/avalanche/trade?outputCurrency=${CONTRACT}`;
-const snowtraceUrl = `https://snowtrace.io/token/${CONTRACT}`;
+const buyUrl = `https://arena.trade/token/0x1b7bf3cf3080ea8b844e3834fb8705bbf975600c`;
+const snowtraceUrl = `https://snowscan.xyz/token/${CONTRACT}`;
 
 window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("year").textContent = new Date().getFullYear();
