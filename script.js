@@ -35,21 +35,33 @@ window.addEventListener("DOMContentLoaded", () => {
   const heroHeight = hero.offsetHeight;
 
   function updatePoop() {
-    const scrollY = window.scrollY;
-    const start = heroHeight * 0.1;
-    const end = info.offsetTop + 40;
-    const clamped = Math.min(Math.max(scrollY - start, 0), end - start);
-    const progress = (clamped) / (end - start);
-    poop.style.opacity = progress > 0.02 ? 1 : 0;
-    poop.style.transform = `translate(-50%, ${progress * 600}px) rotate(${progress * 20 - 10}deg) scale(1.4)`;
+  const scrollY = window.scrollY;
+  const start = heroHeight * 0.1;
+  const end = document.body.scrollHeight; // allow falling past toilet
+  const clamped = Math.min(Math.max(scrollY - start, 0), end - start);
+  let progress = clamped / (end - start);
+  poop.style.opacity = progress > 0.02 ? 1 : 0;
 
-    const toiletRect = toilet.getBoundingClientRect();
-    const poopRect = poop.getBoundingClientRect();
-    const closeHoriz = Math.abs((poopRect.left + poopRect.width/2) - (toiletRect.left + toiletRect.width/2)) < 90;
-    const closeVert = (poopRect.bottom) > (toiletRect.top + 40);
-    const container = toilet.parentElement;
-    if (closeHoriz && closeVert) { container.classList.add("hit"); } else { container.classList.remove("hit"); }
+  // Default fall position
+  let fallDistance = progress * 600;
+
+  // Check for collisions with windows or toilet
+  const obstacles = document.querySelectorAll(".window, #toiletTarget");
+  const poopRect = poop.getBoundingClientRect();
+
+  for (let obs of obstacles) {
+    const obsRect = obs.getBoundingClientRect();
+    const closeHoriz = Math.abs((poopRect.left + poopRect.width / 2) - (obsRect.left + obsRect.width / 2)) < 500;
+    const closeVert = poopRect.bottom >= obsRect.top;
+    if (closeHoriz && closeVert) {
+      // Stop falling when hitting this obstacle
+      fallDistance = obsRect.top - poopRect.height;
+      break;
+    }
   }
+
+  poop.style.transform = `translate(-50%, ${fallDistance}px) rotate(${progress * 20 - 10}deg) scale(1.4)`;
+}
 
   updatePoop();
   window.addEventListener("scroll", updatePoop, { passive: true });
