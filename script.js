@@ -218,6 +218,8 @@ document.head.appendChild(style);
     const poop = document.querySelector('#poop.poop');
     if(!poop) return;
     const toilet = document.getElementById('goldToilet');
+    const bowlImg = toilet ? toilet.querySelector('.gold-toilet-img') : null;
+    const splashEl = document.getElementById('toiletSplash');
     const character = document.querySelector('.character');
 
     let baselineTop = 0;
@@ -243,8 +245,15 @@ document.head.appendChild(style);
 
       if(toilet){
         const tRect = toilet.getBoundingClientRect();
-        const landY = window.scrollY + tRect.top + (tRect.height * 0.15) - poopH;
+        const landY = (function(){
+        const root = getComputedStyle(document.documentElement);
+        const offset = parseFloat(root.getPropertyValue('--poop-stop-offset')) || 0;
+        const rect = (bowlImg ? bowlImg.getBoundingClientRect() : tRect);
+        return window.scrollY + rect.top + rect.height - poopH + offset;
+      })();
+        targetY = Math.min(targetY, landY);
         if(targetY >= landY - 1){
+          /* DEBUG_OFFSET_LOG */ try { const dbg = getComputedStyle(document.documentElement).getPropertyValue('--poop-stop-offset'); if(!window.__poopDbg){ console.log('Poop stop offset:', dbg.trim()); window.__poopDbg=true; } } catch(e){}
           // Poop hits toilet -> fade out into bowl
           poop.style.opacity = 0;
           poop.style.transform = `translate(-50%, ${targetY - window.scrollY + 10}px) scale(1.4)`;
