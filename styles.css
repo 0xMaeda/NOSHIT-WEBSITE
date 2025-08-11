@@ -53,8 +53,8 @@ h1, h2 { margin: 0 0 .5rem 0; }
 }
 
 .poop {
-  position: absolute;
-  bottom: 260px;
+  position: fixed;
+  
   left: calc(50% + 248px);
   transform: translate(-50%, 0) scale(1.4);
   font-size: 64px;
@@ -138,3 +138,49 @@ h1, h2 { margin: 0 0 .5rem 0; }
   .poop { left: calc(50% + 110px); }
   .toilet { width: 200px; }
 }
+
+/* === Patch: ensure windows appear above poop === */
+.window, .building-window { position: relative; z-index: 4; }
+.poop { z-index: 3; }
+
+/* Bottom-of-page toilet section */
+.toilet-bottom-section {
+  margin-top: 40vh; /* leave space so user scroll reaches end */
+  display: flex;
+  justify-content: center;
+  padding: 48px 0 80px;
+}
+.toilet-bottom-section .toilet-wrap { position: relative; }
+.toilet-bottom-section .toilet { width: clamp(200px, 28vw, 360px); display: block; }
+
+/* Fixed bottom gold toilet */
+.gold-toilet-static { display: flex; justify-content: center; padding: 48px 0; }
+.gold-toilet-img { width: clamp(180px, 24vw, 320px); display: block; filter: hue-rotate(25deg) saturate(3.2) brightness(1.15) contrast(1.1); }
+/* keep poop above background but below windows if any */
+.poop { z-index: 3; }
+
+/* Align toilet horizontally with character */
+.toilet-aligned {
+  display: block;
+  position: relative;
+}
+.toilet-aligned .gold-toilet-img {
+  position: absolute;
+  left: calc(50% + 248px); /* match poop's left positioning */
+  transform: translateX(-50%);
+}
+
+/* Poop behind toilet */
+.toilet-aligned {
+  z-index: 5; /* above poop */
+  position: relative;
+}
+.poop {
+  z-index: 3; /* behind toilet */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Disappear-into-toilet layering */
+.toilet-aligned { position: relative; z-index: 5; }
+.toilet-aligned .gold-toilet-img { position: absolute; z-index: 5; }
+.poop { z-index: 3; transition: opacity .3s ease, transform .25s ease; }
